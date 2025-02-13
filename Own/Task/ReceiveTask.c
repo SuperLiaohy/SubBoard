@@ -6,7 +6,6 @@
 
 void ReceiveTask(void const* argument) {
     while (1) {
-
-
+        osDelay(1);
     }
 }

@@ -23,7 +23,7 @@ void interact_get_feedback(Interact* self) {
     memcpy(&self->custom_frame_rx, self->rx_frame.data, sizeof(self->custom_frame_rx));
 }
 void interact_send(Interact* self) {
-    uart_dma_self_write(&self->uartPlus, sizeof(self->tx_frame));
+    uart_dma_self_send(&self->uartPlus, sizeof(self->tx_frame));
 }
 void interact_start_receive(Interact* self) {
     uart_dma_idle_receive(&self->uartPlus, sizeof(self->rx_frame));

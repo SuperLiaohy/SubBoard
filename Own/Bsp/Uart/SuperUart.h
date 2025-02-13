@@ -32,9 +32,9 @@ typedef struct {
 } SuperUart;
 
 void uart_init(SuperUart *self, UART_HandleTypeDef *uart, uint8_t* rx_data, uint8_t* tx_data);
-void uart_block_write(SuperUart *self, uint8_t *data, uint16_t size);
-void uart_dma_write(SuperUart *self, uint8_t *data, uint16_t size);
-void uart_dma_self_write(SuperUart *self, uint16_t size);
+void uart_block_send(SuperUart *self, uint8_t *data, uint16_t size);
+void uart_dma_send(SuperUart *self, uint8_t *data, uint16_t size);
+void uart_dma_self_send(SuperUart *self, uint16_t size);
 void uart_dma_idle_receive(SuperUart *self, uint16_t size);
 void uart_it_idle_receive(SuperUart *self, uint16_t size);
 

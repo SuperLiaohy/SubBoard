@@ -10,15 +10,15 @@ void uart_init(SuperUart *self, UART_HandleTypeDef *uart, uint8_t* rx_data, uint
     self->tx_data = tx_data;
 }
 
-void uart_block_write(SuperUart *self, uint8_t *data, uint16_t size) {
+void uart_block_send(SuperUart *self, uint8_t *data, uint16_t size) {
     HAL_UART_Transmit(self->uart, data, size, HAL_MAX_DELAY);
 }
 
-void uart_dma_write(SuperUart *self, uint8_t *data, uint16_t size) {
+void uart_dma_send(SuperUart *self, uint8_t *data, uint16_t size) {
     HAL_UART_Transmit_DMA(self->uart, data, size);
 }
 
-void uart_dma_self_write(SuperUart *self, uint16_t size) {
+void uart_dma_self_send(SuperUart *self, uint16_t size) {
     HAL_UART_Transmit_DMA(self->uart, self->tx_data, size);
 }
 
