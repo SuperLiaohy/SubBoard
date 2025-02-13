@@ -1,0 +1,40 @@
+# arm-none-eabi-toolchain.cmake
+set(CMAKE_SYSTEM_NAME Generic)
+set(CMAKE_SYSTEM_PROCESSOR cortex-m7)  # 明确指定处理器类型
+#set(CMAKE_SYSTEM_ARCH armv7e-m)        # 指定架构
+
+# 设置工具链路径
+set(TOOLCHAIN_PATH "D:/Keil_v5/ARM/ARMCLANG/bin")
+
+# 设置编译器
+set(CMAKE_C_COMPILER "${TOOLCHAIN_PATH}/armclang.exe")
+set(CMAKE_CXX_COMPILER "${TOOLCHAIN_PATH}/armclang.exe")
+set(CMAKE_ASM_COMPILER "${TOOLCHAIN_PATH}/armclang.exe")
+set(CMAKE_LINKER "${TOOLCHAIN_PATH}/armlink.exe")
+set(CMAKE_AR "${TOOLCHAIN_PATH}/armar.exe")
+
+# 设置编译器标志
+set(CMAKE_C_FLAGS_INIT "--target=arm-arm-none-eabi -mcpu=cortex-m7")
+set(CMAKE_CXX_FLAGS_INIT ${CMAKE_C_FLAGS_INIT})
+set(CMAKE_ASM_FLAGS_INIT ${CMAKE_C_FLAGS_INIT})
+
+# 不测试编译器
+set(CMAKE_C_COMPILER_WORKS TRUE)
+set(CMAKE_CXX_COMPILER_WORKS TRUE)
+set(CMAKE_ASM_COMPILER_WORKS TRUE)
+
+# 强制使用交叉编译器
+set(CMAKE_C_COMPILER_FORCED TRUE)
+set(CMAKE_CXX_COMPILER_FORCED TRUE)
+set(CMAKE_ASM_COMPILER_FORCED TRUE)
+
+# 设置查找规则
+set(CMAKE_FIND_ROOT_PATH_MODE_PROGRAM NEVER)
+set(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY)
+set(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
+set(CMAKE_FIND_ROOT_PATH_MODE_PACKAGE ONLY)
+
+# 添加策略设置
+if(POLICY CMP0123)
+    cmake_policy(SET CMP0123 NEW)
+endif()
