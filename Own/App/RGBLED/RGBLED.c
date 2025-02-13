@@ -10,9 +10,6 @@
 
 void rgb_init(RgbLed *self, SPI_HandleTypeDef *hspi) {
     spi_init(&self->spiPlus, hspi);
-    self->red = 0;
-    self->green = 0;
-    self->blue = 0;
 }
 
 void rgb_os_load(RgbLed *self, uint8_t red, uint8_t green, uint8_t blue) {

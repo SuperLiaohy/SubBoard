@@ -2,12 +2,8 @@
 // Created by Administrator on 24-10-3.
 //
 
-#include "FreeRTOS.h"
-#include "cmsis_os.h"
+#include "OwnTask.h"
 
-#include "Uart/SuperUart.h"
-
-#include "Interact/Interact.h"
 
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef* huart) {
     UNUSED(huart);

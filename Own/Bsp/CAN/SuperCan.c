@@ -71,6 +71,6 @@ void can_receive(SuperCan *self) {
     HAL_FDCAN_GetRxMessage(self->hcan, FDCAN_RX_FIFO0, &self->rx_header, self->rx_data);
 }
 
-void can_receive_data(SuperCan *self, uint8_t *data) {
+void can_receive_pdata(SuperCan *self, uint8_t *data) {
     HAL_FDCAN_GetRxMessage(self->hcan, FDCAN_RX_FIFO0, &self->rx_header, data);
 }

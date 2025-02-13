@@ -39,7 +39,7 @@ void can_start(SuperCan *self);
 void can_send_pdata(SuperCan *self, uint32_t id, uint8_t *data);
 void can_send_data(SuperCan *self, uint32_t id, int16_t data1, int16_t data2, int16_t data3, int16_t data4);
 void can_receive(SuperCan *self);
-void can_receive_data(SuperCan *self, uint8_t *data);
+void can_receive_pdata(SuperCan *self, uint8_t *data);
 
 extern SuperCan canPlus1;
 extern SuperCan canPlus2;

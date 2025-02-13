@@ -23,10 +23,6 @@ extern "C" {
  * 所以使用SPI DMA传输的数据必须要在RAM3中
  */
 typedef struct {
-    uint8_t red;
-    uint8_t green;
-    uint8_t blue;
-
     SuperSPI spiPlus;
     uint8_t tx_buf[24];
 } RgbLed;

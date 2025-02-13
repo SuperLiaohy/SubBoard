@@ -2,28 +2,25 @@
 // Created by Administrator on 24-10-3.
 //
 
-#include "CAN/SuperCan.h"
+#include "OwnTask.h"
 
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-#include "FreeRTOS.h"
-#include "cmsis_os.h"
-
-#ifdef __cplusplus
-}
-#endif
-
-
-extern float yaw;
-float relative_position = 0;
-float GM6020pos = 0;
-float lkMotorSpeed = 0;
-float dmMotorSpeed = 0;
-float dmMotorPos = 0;
-float a =0;
-void HAL_FDCAN_RxFifo0Callback(FDCAN_HandleTypeDef *hfdcan, uint32_t RxFifo0ITs) {
+void HAL_FDCAN_RxFifo0Callback(FDCAN_HandleTypeDef* hfdcan, uint32_t RxFifo0ITs) {
     UNUSED(RxFifo0ITs);
-
+    if (hfdcan == can1_plus.hcan) {
+        can_receive(&can1_plus);
+        for (int i = 0; i < 4; ++i) {
+            if (can1_plus.rx_header.Identifier == lk_motor_board[i].feed_back.rx_id) {
+                lk_motor_board_read_pdata(&lk_motor_board[i], can1_plus.rx_data);
+                break;
+            }
+        }
+    } else if (hfdcan == can2_plus.hcan) {
+        can_receive(&can2_plus);
+        for (int i = 0; i < 4; ++i) {
+            if (can2_plus.rx_header.Identifier == m3508[i].feed_back.rx_id) {
+                lk_motor_board_read_pdata(&lk_motor_board[i], can2_plus.rx_data);
+                break;
+            }
+        }
+    }
 }
