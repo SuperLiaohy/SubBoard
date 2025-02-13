@@ -66,12 +66,10 @@ include_directories(
 
         #        "D:/Keil_541_pack/ARM/CMSIS/6.1.0/CMSIS/Core/Include"
         #        "D:/Keil_541_pack/Keil/STM32F4xx_DFP/2.17.1/Drivers/CMSIS/Device/ST/STM32F4xx/Include"
-#        "Own/App"
-#        "Own/App/Imu/BMI088/inc"
-#        "Own/Bsp"
-#        "Own/Moudle"
-#        "Own/Obj"
-#        "Own/OperateSystem"
+        "Own/App"
+        "Own/Bsp"
+        "Own/Mod"
+        "Own/Cbk"
 )
 
 
@@ -91,10 +89,11 @@ file(GLOB_RECURSE SOURCES
 )
 #        "D:/Keil_Pack/ARM/CMSIS-DSP/1.15.0/Source/*/arm*"
 file(GLOB_RECURSE OWN_SOURCES
-#        "Own/CallBack/*.c" "Own/CallBack/*.cpp"
-#        "Own/App/*.c" "Own/App/*.cpp"
-#        "Own/Bsp/*.c" "Own/Bsp/*.cpp"
-#        "Own/Moudle/*.c" "Own/Moudle/*.cpp"
+        "Own/Cbk/*.c" "Own/Cbk/*.cpp"
+        "Own/App/*.c" "Own/App/*.cpp"
+        "Own/Bsp/*.c" "Own/Bsp/*.cpp"
+        "Own/Mod/*.c" "Own/Mod/*.cpp"
+        "Own/Task/*.c" "Own/Task/*.cpp"
 #        "Own/Obj/*.c" "Own/Obj/*.cpp"
 #        "Own/OperateSystem/*.c" "Own/OperateSystem/*.cpp"
 )
