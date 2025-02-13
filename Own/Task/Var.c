@@ -6,9 +6,13 @@
 #include "Motor/M3508.h"
 #include "RGBLED/RGBLED.h"
 
-RgbLed rgbLed;
+RgbLed rgb_led;
 
-lkMotorBoard lkMotor[4];
-M3508 motor[4];
+SuperCan can1_plus;
+SuperCan can2_plus;
+SuperCan can3_plus;
+
+lkMotorBoard lk_motor_board[4];
+M3508 m3508[4];
 
 Interact interact;

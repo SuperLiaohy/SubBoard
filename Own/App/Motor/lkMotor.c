@@ -6,9 +6,9 @@
 
 #if USING_LKMOTOR == 1
 
-void lk_motor_board_init(lkMotorBoard* self, uint16_t tx_id, uint8_t rx_id) {
-    self->tx_id           = tx_id;
-    self->feed_back.rx_id = rx_id;
+void lk_motor_board_init(lkMotorBoard* self, uint16_t tx_id, uint16_t rx_id, uint32_t precision_range) {
+    self->tx_id = tx_id;
+    feedback_init(&self->feed_back, rx_id, precision_range);
 }
 
 void lk_motor_board_read_pdata(lkMotorBoard* self, uint8_t* data) {

@@ -70,6 +70,7 @@ include_directories(
         "Own/Bsp"
         "Own/Mod"
         "Own/Cbk"
+        "Own/Task"
 )
 
 

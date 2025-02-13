@@ -22,7 +22,7 @@ typedef struct {
     //    Detect detect;
 } M3508;
 
-void m3508_init(M3508* self, uint16_t tx_id, uint16_t rx_id, float gain);
+void m3508_init(M3508* self, uint16_t tx_id, uint16_t rx_id, uint32_t precision_range, float gain);
 void m3508_read_pdata(M3508* self, uint8_t* data);
 
 #endif //USING_M3508

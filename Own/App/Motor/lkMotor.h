@@ -35,7 +35,7 @@ typedef struct {
 
 } lkMotorBoard;
 
-void lk_motor_board_init(lkMotorBoard* self, uint16_t tx_id, uint8_t rx_id);
+void lk_motor_board_init(lkMotorBoard* self, uint16_t tx_id, uint16_t rx_id, uint32_t precision_range);
 void lk_motor_board_read_pdata(lkMotorBoard* self, uint8_t* data);
 
 extern lkMotorBoard test_motor;

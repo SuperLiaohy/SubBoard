@@ -19,7 +19,7 @@ static const FOC LK_FOC    = {0x140, 0x280, 0x280};
 static const FOC M3508_FOC = {0x200, 0x200, 0x1FF};
 
 typedef struct {
-    uint8_t rx_id;
+    uint16_t rx_id;
     uint32_t precision_range;
 
     struct {

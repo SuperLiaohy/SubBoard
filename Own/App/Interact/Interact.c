@@ -16,6 +16,9 @@ void interact_write(Interact* self) {
     memcpy(self->tx_frame.data, &self->custom_frame_tx, sizeof(self->custom_frame_tx));
 }
 void interact_get_feedback(Interact* self) {
+    /*
+     * todo: 修改custom_frame_rx的数据结构
+     */
     memcpy(&self->custom_frame_rx, self->rx_frame.data, sizeof(self->custom_frame_rx));
 }
 void interact_send(Interact* self) {
