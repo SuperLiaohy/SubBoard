@@ -31,18 +31,9 @@ extern uint8_t cmd;
 void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef* huart, uint16_t Size) {
     UNUSED(Size);
 #if USING_UART_IDLE
-//    BaseType_t xHigherPriorityTaskWoken = pdFALSE;
-//    if (huart == interact.remote_control.uartPlus.uart) {
-//        interact.remote_control.update();
-//        if (cnt++ > 5) {
-//            xEventGroupSetBitsFromISR(osEventGroup, REMOTE_CONTROL_START_EVENT, &xHigherPriorityTaskWoken);
-//            portYIELD_FROM_ISR(xHigherPriorityTaskWoken);
-//        }
-//    } else if (huart == interact.image_trans.uartPlus.uart) {
-//
-//        interact.image_trans.update();
-//			xHigherPriorityTaskWoken = pdTRUE;
-//				portYIELD_FROM_ISR(xHigherPriorityTaskWoken);
-//    }
+    if (huart == interact.uartPlus.uart) {
+        interact.status = GOT;
+        xTaskResumeFromISR(RECEIVE_TASKHandle);
+    }
 #endif
 }

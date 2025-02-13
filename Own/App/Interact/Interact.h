@@ -58,6 +58,11 @@ typedef struct {
     uint16_t crc16;
 } __attribute__((packed)) receive_frame;
 
+typedef enum {
+    NONE,
+    GOT,
+} interact_status;
+
 typedef struct {
     custom_rx_frame custom_frame_rx;
     receive_frame rx_frame;
@@ -66,6 +71,7 @@ typedef struct {
     trans_frame tx_frame;
 
     SuperUart uartPlus;
+    interact_status status;
 } Interact;
 
 void interact_init(Interact* self, UART_HandleTypeDef* huart);

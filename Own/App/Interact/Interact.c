@@ -7,6 +7,7 @@
 void interact_init(Interact *self, UART_HandleTypeDef *huart) {
     //初始化can
     uart_init(&self->uartPlus, huart, (uint8_t*)(&self->rx_frame), (uint8_t*)(&self->tx_frame));
+    self->status = NONE;
 }
 void interact_write(Interact* self) {
     /*
