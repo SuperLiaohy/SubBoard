@@ -18,7 +18,7 @@ void HAL_FDCAN_RxFifo0Callback(FDCAN_HandleTypeDef* hfdcan, uint32_t RxFifo0ITs)
         can_receive(&can2_plus);
         for (int i = 0; i < 4; ++i) {
             if (can2_plus.rx_header.Identifier == m3508[i].feed_back.rx_id) {
-                lk_motor_board_read_pdata(&lk_motor_board[i], can2_plus.rx_data);
+                m3508_read_pdata(&m3508[i], can2_plus.rx_data);
                 break;
             }
         }

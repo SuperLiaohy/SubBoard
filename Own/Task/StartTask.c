@@ -17,8 +17,8 @@ void StartDefaultTask(void const* argument) {
     can_filter_config(&can2_plus, 1, MASK, 0, 0);
 
     // 启动can
-    can_start(&can1_plus);
-    can_start(&can2_plus);
+    can_start(&can1_plus);  // 瓴控电机在can1上
+    can_start(&can2_plus);  // M3508电机在can2上
 
     // 初始化rgb灯
     rgb_init(&rgb_led, &hspi6);
