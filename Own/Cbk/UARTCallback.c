@@ -32,8 +32,10 @@ void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef* huart, uint16_t Size) {
     UNUSED(Size);
 #if USING_UART_IDLE
     if (huart == interact.uartPlus.uart) {
+        // 注意解析是通过memcpy的方式，要保证数据发过来时也是通过memcpy的方式，要不然数据大小端可能不太一样
+        interact_get_feedback(&interact);
         interact.status = GOT;
-        xTaskResumeFromISR(RECEIVE_TASKHandle);
+        xTaskResumeFromISR(TRANSMIT_TASKHandle);
     }
 #endif
 }
