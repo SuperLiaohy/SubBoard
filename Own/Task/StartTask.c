@@ -40,9 +40,12 @@ void StartDefaultTask(void const* argument) {
     // 初始化用户交互系统
     interact_init(&interact, &huart2);
 
+    // 启动用户交互系统
+    interact_send(&interact);
     /*
      * 这里可以加入信号量或者事件集进行等待，
      * 等待接收到大疆的3508电机数据再删除自身（通过再can回调里使用信号量或者事件集来判断）。
+     * 也可等待用户交互数据到达
      * 保障数据安全执行
      * 如果想要等待瓴控电机数据，必选要先给瓴控电机发送数据，这样瓴控电机才会返回数据，can才能接收到数据
      */
