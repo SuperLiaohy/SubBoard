@@ -2,7 +2,9 @@
 // Created by Administrator on 25-2-14.
 //
 #include "OwnTask.h"
-
+/*
+ * 优先级最高的任务，用于初始化所有设备，初始化完成后删除自己，然后执行其他任务
+ */
 void StartDefaultTask(void const* argument) {
     /*
      * 外设的初始化
@@ -37,6 +39,13 @@ void StartDefaultTask(void const* argument) {
 
     // 初始化用户交互系统
     interact_init(&interact, &huart2);
+
+    /*
+     * 这里可以加入信号量或者事件集进行等待，
+     * 等待接收到大疆的3508电机数据再删除自身（通过再can回调里使用信号量或者事件集来判断）。
+     * 保障数据安全执行
+     * 如果想要等待瓴控电机数据，必选要先给瓴控电机发送数据，这样瓴控电机才会返回数据，can才能接收到数据
+     */
 
     vTaskDelete(NULL);
 }
