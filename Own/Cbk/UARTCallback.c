@@ -36,6 +36,7 @@ void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef* huart, uint16_t Size) {
         interact_get_feedback(&interact);
         interact.status = GOT;
         xTaskResumeFromISR(TRANSMIT_TASKHandle);
+        // 开启下一次接收放在了USART2_IRQHandler里
     }
 #endif
 }
