@@ -136,7 +136,7 @@ void MX_FREERTOS_Init(void) {
   CHASSIS_TASKHandle = osThreadCreate(osThread(CHASSIS_TASK), NULL);
 
   /* definition and creation of RECEIVE_TASK */
-  osThreadDef(RECEIVE_TASK, ReceiveTask, osPriorityNormal, 0, 256);
+  osThreadDef(RECEIVE_TASK, ReceiveTask, osPriorityHigh, 0, 256);
   RECEIVE_TASKHandle = osThreadCreate(osThread(RECEIVE_TASK), NULL);
 
   /* definition and creation of DETECT_TASK */
@@ -144,7 +144,7 @@ void MX_FREERTOS_Init(void) {
   DETECT_TASKHandle = osThreadCreate(osThread(DETECT_TASK), NULL);
 
   /* definition and creation of TRANSMIT_TASK */
-  osThreadDef(TRANSMIT_TASK, TransmitTask, osPriorityNormal, 0, 256);
+  osThreadDef(TRANSMIT_TASK, TransmitTask, osPriorityAboveNormal, 0, 256);
   TRANSMIT_TASKHandle = osThreadCreate(osThread(TRANSMIT_TASK), NULL);
 
   /* definition and creation of LED_TASK */

@@ -9,6 +9,7 @@ void StartDefaultTask(void const* argument) {
     /*
      * 外设的初始化
      */
+	dwt_init();
     // 初始化CAN
     can_init(&can1_plus, &hfdcan1);
     can_init(&can2_plus, &hfdcan2);
@@ -32,6 +33,7 @@ void StartDefaultTask(void const* argument) {
     lk_motor_board_init(&lk_motor_board[2], 3, LK_FOC.RX_ID + 3, 65536/4);
     lk_motor_board_init(&lk_motor_board[3], 4, LK_FOC.RX_ID + 4, 65536/4);
     // M3508 参数1为电机编号，参数2为电机的can发送id，参数3为电机的can接收id，参数4为电机的电机的can返回角度数据的精度，参数5为电机的电机的减速比
+    m3508_init(&test_moto, 1, GM6020_FOC.RX_ID + 1, 8192,19.2f);
     m3508_init(&m3508[0], 1, M3508_FOC.RX_ID + 1, 8192,19.2f);
     m3508_init(&m3508[1], 2, M3508_FOC.RX_ID + 2, 8192,19.2f);
     m3508_init(&m3508[2], 3, M3508_FOC.RX_ID + 3, 8192,19.2f);
@@ -39,9 +41,10 @@ void StartDefaultTask(void const* argument) {
 
     // 初始化用户交互系统
     interact_init(&interact, &huart2);
-
+    interact_init(&test, &huart3);
     // 启动用户交互系统
-    interact_send(&interact);
+    interact_start_receive(&interact);
+    interact_start_receive(&test);
     /*
      * 这里可以加入信号量或者事件集进行等待，
      * 等待接收到大疆的3508电机数据再删除自身（通过再can回调里使用信号量或者事件集来判断）。

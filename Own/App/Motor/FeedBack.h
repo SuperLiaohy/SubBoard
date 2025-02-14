@@ -17,7 +17,7 @@ typedef struct {
 
 static const FOC LK_FOC    = {0x140, 0x280, 0x280};
 static const FOC M3508_FOC = {0x200, 0x200, 0x1FF};
-
+static const FOC GM6020_FOC = {0x204, 0x1FF,0x2FF};
 typedef struct {
     uint16_t rx_id;
     uint32_t precision_range;
@@ -40,7 +40,7 @@ typedef struct {
     float totalPosition;
 } FeedBack;
 
-inline void feedback_init(FeedBack* self, uint8_t id, uint32_t precision_range) {
+static void feedback_init(FeedBack* self, uint16_t id, uint32_t precision_range) {
     self->rx_id           = id;
     self->precision_range = precision_range;
 };

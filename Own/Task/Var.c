@@ -14,5 +14,6 @@ SuperCan can3_plus;
 
 lkMotorBoard lk_motor_board[4];
 M3508 m3508[4];
-
+M3508 test_moto;
 Interact interact;
+Interact test;

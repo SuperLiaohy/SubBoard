@@ -56,6 +56,7 @@ typedef struct {
     uint16_t cmd_id;
     uint8_t data[64 - sizeof(frame_header) - sizeof(uint16_t) - sizeof(uint16_t)];
     uint16_t crc16;
+    uint8_t none[68];
 } __attribute__((packed)) receive_frame;
 
 typedef enum {

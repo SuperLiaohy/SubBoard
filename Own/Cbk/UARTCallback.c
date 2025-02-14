@@ -26,17 +26,31 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef* huart) {
 }
 
 int16_t x, y;
-static uint8_t cnt = 0;
+uint32_t cnt_uart2 = 0;
+uint32_t cnt_uart3 = 0;
 extern uint8_t cmd;
+void us_delay(uint32_t us);
 void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef* huart, uint16_t Size) {
     UNUSED(Size);
 #if USING_UART_IDLE
     if (huart == interact.uartPlus.uart) {
-        // 注意解析是通过memcpy的方式，要保证数据发过来时也是通过memcpy的方式，要不然数据大小端可能不太一样
-        interact_get_feedback(&interact);
-        interact.status = GOT;
-        xTaskResumeFromISR(TRANSMIT_TASKHandle);
+        if (interact.rx_frame.frame_head.sof == 0xA5) {
+            // 注意解析是通过memcpy的方式，要保证数据发过来时也是通过memcpy的方式，要不然数据大小端可能不太一样
+            interact_get_feedback(&interact);
+					++cnt_uart2;
+        interact_send(&interact);
+
+            xTaskResumeFromISR(TRANSMIT_TASKHandle);
+        }
         // 开启下一次接收放在了USART2_IRQHandler里
+    } else if (huart == test.uartPlus.uart) {
+			++cnt_uart3;            interact.status = 1-interact.status;
+
+        // 注意解析是通过memcpy的方式，要保证数据发过来时也是通过memcpy的方式，要不然数据大小端可能不太一样
+//        interact_get_feedback(&test);
+//        interact.status = GOT;
+//        xTaskResumeFromISR(TRANSMIT_TASKHandle);
+        // 开启下一次接收放在了USART3_IRQHandler里
     }
 #endif
 }

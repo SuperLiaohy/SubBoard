@@ -14,7 +14,7 @@
 #include "Motor/lkMotor.h"
 #include "Motor/M3508.h"
 #include "RGBLED/RGBLED.h"
-
+#include "DWT/dwt.h"
 extern osThreadId defaultTaskHandle;
 extern osThreadId CHASSIS_TASKHandle;
 extern osThreadId RECEIVE_TASKHandle;
@@ -29,7 +29,8 @@ extern SuperCan can3_plus;
 extern lkMotorBoard lk_motor_board[4];
 extern M3508 m3508[4];
 extern Interact interact;
-
+extern M3508 test_moto;
+extern Interact test;
 void StartDefaultTask(void const* argument);
 void ChassisTask(void const* argument);
 void ReceiveTask(void const* argument);
