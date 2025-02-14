@@ -8,3 +8,4 @@ MDK-ARM/*
 
 !MDK-ARM/startup_stm32h723xx.s
 
+!MDK-ARM/SubBoard.uvprojx
